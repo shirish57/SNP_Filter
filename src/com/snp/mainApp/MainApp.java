@@ -20,14 +20,30 @@ public class MainApp {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ReadInput reader = new ReadInput("rawdata.txt");
+		ReadInput reader = new ReadInput("res/rawdata.txt");
 		List<Post> posts = reader.getPostContent();
 
 		PreprocessUtil preProcess = new PreprocessUtil();
 		posts = preProcess.populatePostSentences(posts);
 		//System.out.println(posts.get(0).getSentences().get(0).getRawSentence());
 		posts = preProcess.removeStopWordsFromPosts(posts);
-		System.out.println(posts.get(0).getSentences().get(0).getRawSentence());
+		//System.out.println(posts.get(0).getSentences().get(0).getRawSentence());
+		
+		posts = preProcess.extractTags(posts);
+		//System.out.println(posts.get(5).getSentences().get(2).getTags().get(0));
+		
+		posts = preProcess.decomposeTags(posts);
+		System.out.println(posts.get(3).getSentences().get(0).getDecomposedTags().get(0));
 	}
 
 }
+
+
+
+
+
+
+
+
+
+

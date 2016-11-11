@@ -15,9 +15,19 @@ import com.snp.models.Post;
 public class PreprocessUtil {
 	
 	private SplitSentences splitSentencesUtil;
+	private static TagDecomposer td;
 	
 	public PreprocessUtil(){
 		this.splitSentencesUtil = new SplitSentences();
+		List<String> dictionaries = new ArrayList<String>();
+		dictionaries = addDictionaries(dictionaries);
+		td = new TagDecomposer(dictionaries);
+	}
+	
+	private List<String> addDictionaries(List<String> dictionaries){
+		dictionaries.add(System.getProperty("user.dir") + "/res/" + "dictionary2.txt");
+		dictionaries.add(System.getProperty("user.dir") + "/res/" + "project_dictionary.txt");
+		return dictionaries;
 	}
 	
 	/**
@@ -48,5 +58,26 @@ public class PreprocessUtil {
 			removedStopWordPosts.add(removeStopWords.removeStopWordsFromPosts(post));
 		}
 		return removedStopWordPosts;
+	}
+	
+	/**
+	 * Extract Tags from Posts
+	 * @param posts
+	 * @return
+	 */
+	public List<Post> extractTags(List<Post> posts){
+		TagsExtraction te = new TagsExtraction();
+		posts = te.extractHashtagsFromPosts(posts);
+		return posts;
+	}
+	
+	/**
+	 * Decompose Compound words in Tags
+	 * @param posts
+	 * @return
+	 */
+	public List<Post> decomposeTags(List<Post> posts){
+		posts = td.decomposePostTags(posts);
+		return posts;
 	}
 }

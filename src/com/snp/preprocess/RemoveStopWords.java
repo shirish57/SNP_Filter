@@ -61,12 +61,31 @@ public class RemoveStopWords {
 		sentence.setRawSentence(rawSentence);
 		return sentence;
 	}
+	
+	/**
+	 * Removes stopwords from a list of words
+	 * @param words
+	 * @return
+	 */
+	public List<String> removeStopWordsFromList(List<String> words){
+		
+		List<String> listPostStopWordsRemoval = new ArrayList<String>();
+		this.populateStopWords();
+		for(String word : words){
+			if(this.stopWords.contains(word)){
+				continue;
+			}else{
+				listPostStopWordsRemoval.add(word);
+			}
+		}
+		return listPostStopWordsRemoval;
+	}
 
 	/**
 	 * Populating the stopword list
 	 */
 	private void populateStopWords(){
 		ReadInput ri = new ReadInput();
-		this.stopWords = ri.getStopWords("stopWords.txt");
+		this.stopWords = ri.getStopWords("res/stopWords.txt");
 	}
 }
