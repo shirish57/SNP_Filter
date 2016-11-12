@@ -46,7 +46,7 @@ public class ReadInput {
     		String line;
 		    while ((line = br.readLine()) != null) {
 		    	Post post = new Post();
-		    	post.setRawData(line);
+		    	post.setRawData(line.replace(",", "").replace("#", ""));
 		    	posts.add(post);
 		    }
 		    return posts;
