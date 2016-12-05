@@ -39,7 +39,8 @@ public class TagDecomposer {
 	public List<Post> decomposePostTags(List<Post> posts){
 		
 		RemoveStopWords rsw = new RemoveStopWords();
-		for(Post post : posts){
+		for(int j = 0; j< posts.size(); j++){
+			Post post = posts.get(j);
 			for(int i = 0; i< post.getSentences().size(); i++){
 				Sentence sentence = post.getSentences().get(i);
 				List<String> decomposedTags = new ArrayList<String>();
@@ -47,11 +48,19 @@ public class TagDecomposer {
 					for(String tags : sentence.getTags()){
 						List<String> decomposedCompoundWord = decompose(tags);
 						List<String> removeStopWords = rsw.removeStopWordsFromList(decomposedCompoundWord);
+						
+						String decomposedWords = "";
+						for(String dTags : decomposedCompoundWord){
+							decomposedWords += " " + dTags;
+						}
+						sentence.setRawSentence(sentence.getRawSentence().replace("#" + tags, decomposedWords.trim()));
 						decomposedTags.addAll(removeStopWords);
 					}
 				}
+				post.getSentences().set(i, sentence);
 				post.getSentences().get(i).setDecomposedTags(decomposedTags);
 			}
+			posts.set(j, post);
 		}
 		return posts;
 	}

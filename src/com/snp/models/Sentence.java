@@ -6,6 +6,7 @@ import java.util.List;
 public class Sentence {
 	
 	private String rawSentence;
+	private String preProcessedData;
 	private List<String> words;
 	private List<String> tags;
 	private List<String> decomposedTags;
@@ -21,6 +22,15 @@ public class Sentence {
 		this.words = Arrays.asList(extractWords);
 	}
 	
+	
+	public String getPreProcessedData() {
+		return preProcessedData;
+	}
+
+	public void setPreProcessedData(String preProcessedData) {
+		this.preProcessedData = preProcessedData;
+	}
+
 	public String getRawSentence() {
 		return rawSentence;
 	}

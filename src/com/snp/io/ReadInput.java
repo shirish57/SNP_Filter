@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import com.snp.models.Post;
@@ -46,7 +45,7 @@ public class ReadInput {
     		String line;
 		    while ((line = br.readLine()) != null) {
 		    	Post post = new Post();
-		    	post.setRawData(line.replace(",", "").replace("#", ""));
+		    	post.setRawData(line.replace(",", ""));
 		    	posts.add(post);
 		    }
 		    return posts;
@@ -59,7 +58,7 @@ public class ReadInput {
 	
 	public HashMap<String, String> getImageTags(){
 		
-		Map<String, String> imageTagMapping = new HashMap<String, String>();
+		//Map<String, String> imageTagMapping = new HashMap<String, String>();
 		// Clarifi AI
 		
 		return null;

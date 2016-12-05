@@ -3,8 +3,7 @@
  */
 package com.snp.filter1;
 
-import java.awt.List;
-import java.lang.reflect.Array;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
@@ -14,7 +13,7 @@ import java.util.StringTokenizer;
  */
 public class FilterSet {
 	
-	private ArrayList<String> tags; 
+	private List<String> tags; 
 	
 	public FilterSet() {
 		tags = new ArrayList<String>();
@@ -23,7 +22,7 @@ public class FilterSet {
 		tags.add("Jihad");
 	}
 	
-	public FilterSet(ArrayList<String> tags) {
+	public FilterSet(List<String> tags) {
 		this.tags = tags;
 	}
 	
@@ -32,21 +31,18 @@ public class FilterSet {
 	 * The matching method is one key word match
 	 * limitations:
 	 * 	- name tag can't be matched. 
-	 * @param twitters   represented as a string of tokens delimited by white spaces
+	 * @param preprocessedSentence   represented as a string of tokens delimited by white spaces
 	 * @return
 	 */
-	public ArrayList<String> filterSet1(ArrayList<String> twitters){
+	public Boolean hasWordsinFilterSet(String twitters){
 		ArrayList<String> res = new ArrayList<String>();
-		for(String twitter : twitters) {
-			ArrayList<String> twitter_tokens = tokenize(twitter);
+			ArrayList<String> twitter_tokens = tokenize(twitters);
 			for(String token : twitter_tokens) {
 				if(tags.contains(token)) {
-					res.add(twitter);
-					break;
+					return true; 
 				}
 			}
-		}
-		return res; 
+			return false; 
 	}
 	
 	private ArrayList<String> tokenize(String str){
@@ -60,16 +56,17 @@ public class FilterSet {
 	
 	static public  void main(String [] args) {
 		FilterSet fs = new FilterSet();
-		ArrayList<String> twitters = new ArrayList<String>();
+		List<String> twitters = new ArrayList<String>();
 		twitters.add("Allahu Akbar Jews sent hell brave muslims");
 		twitters.add("Allahu Akbhar Muslims kill Jew everything would change");
 		twitters.add("month especially bless Jihad brothers successful");
-		
-		System.out.println(fs.filterSet1(twitters));
+		for(String twitter : twitters){
+		System.out.println(twitter+": "+fs.hasWordsinFilterSet(twitter));
 		/* Expected results: 
 		 *  "month especially bless Jihad brothers successful"
 		 * 
 		 */
+		}
 		
 	}
 	

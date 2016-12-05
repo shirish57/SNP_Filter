@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.snp.models.Post;
+import com.snp.models.Sentence;
 
 /**
  * @author Shirish
@@ -78,6 +79,25 @@ public class PreprocessUtil {
 	 */
 	public List<Post> decomposeTags(List<Post> posts){
 		posts = td.decomposePostTags(posts);
+		return posts;
+	}
+	
+	/**
+	 * Generate pre-processed sentences for each post
+	 * @param posts
+	 * @return
+	 */
+	public List<Post> generateProcessedCode(List<Post> posts){
+		
+		for(int i = 0; i< posts.size(); i++){
+			Post post = posts.get(i);
+			String postRaw = "";
+			for(int j = 0; j < post.getSentences().size(); j++){
+				Sentence sentence = post.getSentences().get(j);
+				postRaw += " " + sentence.getRawSentence();
+			}
+			post.setRawData(postRaw.trim());
+		}
 		return posts;
 	}
 }
