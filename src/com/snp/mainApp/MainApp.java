@@ -130,7 +130,7 @@ public class MainApp {
 		  
 
 			    while (line != null) {			        
-			        tagsSet1.add(line);
+			        tagsSet1.add(line.toLowerCase());
 			        line = br.readLine();
 			    }
 			

@@ -22,7 +22,7 @@ public class Search {
 		// TODO Auto-generated method stub
 		Search search = new Search();
 		//search.cliques = search.loadCliques(search.cliquePath);
-		System.out.println(search.search("akbar terrorists"));
+		System.out.println(search.search("QUERY"));
 	}
 	
 	public boolean search(String query) throws Throwable{
@@ -42,7 +42,7 @@ public class Search {
 		words = (List) Arrays.asList(stemmedQuery);
 		
 		for(List<String> clique : cliques){
-			if(words.containsAll(clique)){
+			if(words.containsAll(clique) || clique.containsAll(words)){
 				return true;
 			}
 		}
