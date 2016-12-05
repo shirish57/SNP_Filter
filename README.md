@@ -19,14 +19,26 @@ OOC Tags (S3)  | {"Name of People from Unrelated Context", etc.}
 ```{r, tidy=FALSE, eval=FALSE, highlight=FALSE }
 Input : a new twitter
 Out put : Accept or not
- if the twitter contains words in filter set 1 then 
-    if the twitter contains words in filter set 2 then
-        if the twitter contains words in filter set 3 then
-               return not accepted
-        else
-               return accepted 
+1)if the twitter contains words in filter set 1 then 
+2)   if the twitter contains words in filter set 2 then
+3)        if the twitter contains words in filter set 3 then
+4)               return not accepted
+5)        else
+6)               return accepted 
 
 ```
+
+
+```{r, tidy=FALSE, eval=FALSE, highlight=FALSE }
+Input: twitter
+Output: preprocessedTwitter
+1) Split the post into independent sentences 
+2) Remove the stop words from text
+3) Decompose compound data, such as #supportISIS=>support ISIS
+3) Stem the words to root words, such as support, supported, supporting=> support
+```
+
+
 
 ### Limitations
 
