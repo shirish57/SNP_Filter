@@ -13,6 +13,7 @@ Terrorist Tags (S1)  | Specifically terrorism agents or terrorism actions,  such
 Motivation Tags (S2)  | {Encourage, Inspire, etc.}
 OOC Tags (S3)  | {"Name of People from Unrelated Context", etc.}
 
+## Algorithms
 
 ### Preprocess Data
 ```{r, tidy=FALSE, eval=FALSE, highlight=FALSE }
@@ -37,7 +38,9 @@ Out put : Accept or not
 6)               return accepted 
 
 ```
-
+# How to Run the Code
+#### Basic Filtering
+The code in Mainapp.java is doing basic filtering. Run this file, in the result, should see a set of filtered twitter set in the standard output. This set should contain the twitters that have motivational terrorism information in them. 
 
 
 
