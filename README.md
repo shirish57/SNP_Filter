@@ -20,8 +20,8 @@ Input: twitter
 Output: preprocessedTwitter
 1) Split the post into independent sentences 
 2) Remove the stop words from text
-3) Decompose compound data, such as #supportISIS=>support ISIS
-3) Stem the words to root words, such as support, supported, supporting=> support
+3) Decompose compound data, such as #supportISIS =>support ISIS
+3) Stem the words to root words, such as support, supported, supporting => support
 ```
 
 ### Filter Algorithm
