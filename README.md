@@ -32,7 +32,7 @@ Out put : Accept or not
 
 #### 1) Multiple Nouns
 
-Suiside Belt
+Example of multiple nouns : Suiside Belt, cut their heads off, call upon 
 
 Since our matching algorithm workds via  key word matching in a 1-gram model, such that it can't work well on Multiple Nouns.
 For example, it will be hard to filter out a twitter that contains the object _Suicide Belt_. The problem happens because when we break down the sencenten, the smallest unit after dividing is a token made up of one word, such as embasy, isis, division etc. In the meantime, the tags sets are also made up of single word, such as terrorism, isis, threaten.
