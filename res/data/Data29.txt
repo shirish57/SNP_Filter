@@ -1,7 +1,10 @@
 will
 make
-barbecu
-parti
-messag
+barbecue
+party
+a
+message
 from
-isi
+isis
+to
+us

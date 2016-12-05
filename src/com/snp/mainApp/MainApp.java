@@ -3,6 +3,11 @@
  */
 package com.snp.mainApp;
 
+import java.awt.print.Printable;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +49,7 @@ public class MainApp {
 		}
 		
 		// LISM
-		performLism();
+		//performLism();
 		
 		// Pre-Process for Rain's Code
 		List<String> preprocessedSentence = new ArrayList<String>();
@@ -54,10 +59,14 @@ public class MainApp {
 		}
 		
 		// Rain's Code
-		//filter1(preprocessedSentence);
+		for(String terrorismTwitter: filter1(preprocessedSentence) )
+		System.out.println(terrorismTwitter);
 		
 	}
 
+	/*
+	 * 	Filter the twitter based on the tags set
+	 */
 	private static List<String> filter1(List<String> preprocessedSentence) {
 		List<String> filterdTwitters = new ArrayList<String>(); 
 		
@@ -65,13 +74,23 @@ public class MainApp {
 		//Tags for this testing are extracted from the collected dataset. 
 		//set TagsSet1 Terrorism
 		List<String> tagsSet1 = new ArrayList<String>();
-		
-		//TO DO : read tags from file and set filterSet 
+		// read tags from file and set filterSet 
+		try {
+			readTagsSet(tagsSet1, System.getProperty("user.dir") + "/" + "res/setTagsTerrorism.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		FilterSet fs1 = new FilterSet(tagsSet1);
-		
 		
 		//set TagsSet2 Motivation
 		List<String> tagsSet2 = new ArrayList<String>();
+		try {
+			readTagsSet(tagsSet2, System.getProperty("user.dir") + "/" + "res/setTagsMotivation.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		FilterSet fs2 = new FilterSet(tagsSet2);
 		
 		
@@ -79,18 +98,50 @@ public class MainApp {
 		//words are extracted from false positive results
 		
 		List<String> tagsSet3 = new ArrayList<String>(); 
+		try {
+			readTagsSet(tagsSet3, System.getProperty("user.dir") + "/" + "res/setTagsPrezName.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		FilterSet fs3 = new FilterSet(tagsSet1); 
 		
 		for(String preprocessedTwitter : preprocessedSentence){
 			if(fs1.hasWordsinFilterSet(preprocessedTwitter)){
-				if(fs2.hasWordsinFilterSet(preprocessedTwitter)){
+				if(fs2.hasWordsinFilterSet(preprocessedTwitter)){ 
 					if(!fs3.hasWordsinFilterSet(preprocessedTwitter)){
-						filterdTwitters.add(preprocessedTwitter);
+						//do nothing 
+					}else {
+						filterdTwitters.add(preprocessedTwitter); 
 					}
 				}
 			}
 		}
 		return filterdTwitters;
+		
+	}
+
+	private static void readTagsSet(List<String> tagsSet1, String file) throws IOException {
+		// TODO Auto-generated method stub
+		BufferedReader br = new BufferedReader(new FileReader(file));
+		try {
+
+		    String line = br.readLine();
+		  
+
+			    while (line != null) {			        
+			        tagsSet1.add(line);
+			        line = br.readLine();
+			    }
+			
+		    
+		    //System.out.println(tagsSet1);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+		    br.close();
+		}
 		
 	}
 
