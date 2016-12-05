@@ -28,4 +28,11 @@ Out put : Accept or not
 
 ```
 
+### Limitations
 
+#### 1) Multiple Nouns
+
+Suiside Belt
+
+Since our matching algorithm workds via tokenized key word matching, such that it can't work well on Multiple Nouns
+For example, it will be hard to filter out a twitter that contains the object _Suicide Belt_.
