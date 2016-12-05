@@ -14,13 +14,18 @@ Motivation Tags (S2)  | {Encourage, Inspire, etc.}
 OOC Tags (S3)  | {"Name of People from Unrelated Context", etc.}
 
 
-Out algorithm to filter out each published twitter works as follow:
+### Filter Algorithm
+
+```{r, tidy=FALSE, eval=FALSE, highlight=FALSE }
 Input : a new twitter
-Out put : Accept or not 
-Algorithm Filter:
+Out put : Accept or not
  if the twitter contains words in filter set 1 then 
     if the twitter contains words in filter set 2 then
         if the twitter contains words in filter set 3 then
                return not accepted
         else
                return accepted 
+
+```
+
+
