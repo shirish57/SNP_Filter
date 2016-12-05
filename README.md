@@ -14,6 +14,16 @@ Motivation Tags (S2)  | {Encourage, Inspire, etc.}
 OOC Tags (S3)  | {"Name of People from Unrelated Context", etc.}
 
 
+### Preprocess Data
+```{r, tidy=FALSE, eval=FALSE, highlight=FALSE }
+Input: twitter
+Output: preprocessedTwitter
+1) Split the post into independent sentences 
+2) Remove the stop words from text
+3) Decompose compound data, such as #supportISIS=>support ISIS
+3) Stem the words to root words, such as support, supported, supporting=> support
+```
+
 ### Filter Algorithm
 
 ```{r, tidy=FALSE, eval=FALSE, highlight=FALSE }
@@ -29,14 +39,6 @@ Out put : Accept or not
 ```
 
 
-```{r, tidy=FALSE, eval=FALSE, highlight=FALSE }
-Input: twitter
-Output: preprocessedTwitter
-1) Split the post into independent sentences 
-2) Remove the stop words from text
-3) Decompose compound data, such as #supportISIS=>support ISIS
-3) Stem the words to root words, such as support, supported, supporting=> support
-```
 
 
 
